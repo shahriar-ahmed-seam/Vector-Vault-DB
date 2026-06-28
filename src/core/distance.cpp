@@ -23,21 +23,25 @@ namespace vectorvault {
 
 namespace kernels {
 
+// The reductions accumulate in double and return float. Widening the
+// accumulator preserves accuracy for large vectors (dimensionality up to a few
+// thousand) and keeps the scalar path numerically consistent with the SIMD
+// kernels, which also widen to double.
 float scalar_l2_squared(const float* a, const float* b, std::size_t n) {
-    float sum = 0.0f;
+    double sum = 0.0;
     for (std::size_t i = 0; i < n; ++i) {
-        const float diff = a[i] - b[i];
+        const double diff = static_cast<double>(a[i]) - static_cast<double>(b[i]);
         sum += diff * diff;
     }
-    return sum;
+    return static_cast<float>(sum);
 }
 
 float scalar_dot(const float* a, const float* b, std::size_t n) {
-    float sum = 0.0f;
+    double sum = 0.0;
     for (std::size_t i = 0; i < n; ++i) {
-        sum += a[i] * b[i];
+        sum += static_cast<double>(a[i]) * static_cast<double>(b[i]);
     }
-    return sum;
+    return static_cast<float>(sum);
 }
 
 }  // namespace kernels
