@@ -1,0 +1,37 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "pybind11>=2.12"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "vectorvault"
+version = "0.1.0"
+description = "High-performance vector database with a C++ core and Python bindings"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = ["numpy>=1.21"]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0", "hypothesis>=6.0", "numpy>=1.21"]
+
+[tool.scikit-build]
+# The pure-Python package lives under src/python; the compiled extension is
+# installed into the vectorvault package by CMake's install() rule.
+wheel.packages = ["src/python/vectorvault"]
+cmake.version = ">=3.20"
+cmake.build-type = "Release"
+build-dir = "build/{wheel_tag}"
+
+[tool.scikit-build.cmake.define]
+VECTORVAULT_BUILD_PYTHON = "ON"
+VECTORVAULT_BUILD_TESTS = "OFF"
+
+[tool.pytest.ini_options]
+testpaths = ["tests/python"]
+
+[tool.cibuildwheel]
+build = "cp39-* cp310-* cp311-* cp312-*"
+skip = "*-musllinux_* *_i686 pp*"
+build-frontend = "build"
+test-requires = "pytest hypothesis numpy"
+test-command = "pytest {project}/tests/python"
