@@ -7,7 +7,7 @@ namespace vectorvault {
 
 constexpr int kVersionMajor = 0;
 constexpr int kVersionMinor = 1;
-constexpr int kVersionPatch = 0;
+constexpr int kVersionPatch = 1;
 
 // Returns the engine version as a "MAJOR.MINOR.PATCH" string.
 std::string version_string();
