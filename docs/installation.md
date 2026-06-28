@@ -3,7 +3,13 @@
 ## From PyPI
 
 ```bash
-pip install vectorvault
+pip install vector-vault-db
+```
+
+The distribution is `vector-vault-db`; the import name is `vectorvault`:
+
+```python
+import vectorvault as vv
 ```
 
 Wheels are published for CPython 3.9–3.12 on Linux, macOS, and Windows. NumPy is

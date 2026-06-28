@@ -3,7 +3,7 @@ requires = ["scikit-build-core>=0.10", "pybind11>=2.12"]
 build-backend = "scikit_build_core.build"
 
 [project]
-name = "vectorvault"
+name = "vector-vault-db"
 version = "0.1.0"
 description = "High-performance vector database with a C++ core and Python bindings"
 readme = "README.md"
