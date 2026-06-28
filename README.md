@@ -19,6 +19,16 @@ and on-disk format are all implemented directly.
 - **Python bindings** with NumPy support and an exception hierarchy that mirrors
   the engine's error categories.
 
+## Documentation
+
+Full documentation lives in [`docs/`](docs/index.md):
+
+- [Installation](docs/installation.md)
+- [Quickstart](docs/quickstart.md)
+- [Concepts](docs/concepts.md) — metrics, indexes, tuning, persistence
+- [Python API reference](docs/python-api.md)
+- [C++ API guide](docs/cpp-api.md)
+
 ## Architecture
 
 ```
